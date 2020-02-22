@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Address Finder</title>
+    <link rel="stylesheet" type="text/css" href="/static/styles.css">
+    <script src="/static/jquery-3.4.1.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/90312fa36f.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="main-block">
+      <div class="left-part">
+        <i class="fas fa-globe-americas"></i>
+        <h1>Address Finder</h1>
+        <p>Search for an address across countires or get an address in international mailing format.</p>
+      </div> 
+ 
+      <form action="/result" method="post">
+        <div class="title">
+          <i class="fas fa-search"></i></i><h2>Enter info</h2>
+        </div>
+        <div class="info">
+          <select name="country" id="country">
+            <option value="">Country</option>
+          </select>
+          <div class="addrItems" id="addrItems">
+            <input type="text" name="name" placeholder="Street address" />
+            <input type="text" name="name" placeholder="Street address line 2" />
+            <input type="text" name="name" placeholder="City" />
+            <input type="text" name="name" placeholder="Region" />
+            <input type="text" name="name" placeholder="Postal / Zip code" />
+          </div>
+        </div>
+        <button type="submit" href="">Search</button>
+      </form>
+    </div>
+  </body>
+<script type="text/javascript">
+
+  $(document).ready(function() {
+
+    // TO-DO: populate the list; store it properly
+    var country_format = [{"name":"China", "format":"Street address+City|Postcode+Province"},
+                          {"name":"Austria", "format":"Street address|Postal code+City/Town/Locality"},
+                          {"name":"New Zealand", "format":"Apartment number|House number+Street name|Suburb|City+Postal code"}]; 
+
+    $.each(country_format, function(key, val) {
+      $('#country').append(
+        '<option value="' + val.name + '">' + val.name + '</option>'
+      );
+    });
+
+    $('#country').change(function() {
+      var selectedCountry = $(this).children("option:selected").val();
+
+      if (selectedCountry == "") {
+        $('#addrItems').empty();
+
+        $('#addrItems').append(
+          '<input type="text" name="Street address" placeholder="Street address" />' + 
+          '<input type="text" name="Street address line 2" placeholder="Street address line 2" />' + 
+          '<input type="text" name="City" placeholder="City" />' +
+          '<input type="text" name="Region" placeholder="Region" />' +
+          '<input type="text" name="Postal/Zip code" placeholder="Postal/Zip code" />'
+        );
+        return;
+      };
+
+      // TO-DO: format pattern, see https://www.w3schools.com/tags/att_input_pattern.asp
+      for (var country of country_format) {
+
+        if (country.name == selectedCountry) {
+          $('#addrItems').empty();
+
+          var format = country.format;
+          var addrItems = format.split("|");       
+
+          for (var lineItems of addrItems) {
+            var items = lineItems.split("+");
+            for (var i of items) {
+              $('#addrItems').append(
+                '<input type="text" name="' + i + '" placeholder="' + i + '" />'
+                );
+            };
+          };
+          break;
+        };
+      };
+    });
+
+  })
+
+</script>
+</html>
