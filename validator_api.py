@@ -8,9 +8,9 @@ country_format = {
  
   "Spain": {
     "address": {
-      "street_lv": { "name": "address", "type": "string", "note": "street name, house/building number" },
-      "city_lv":   { "name": "city/town/locality", "type": "string" },
-      "postcode":  { "name": "postal code", "type": "numeric", "pattern": "xxxxx" }
+      "street_lv": { "name": "address", "type": "string", "note": "address (street name, house/building number, etc.)" },
+      "city_lv":   { "name": "city_lv", "type": "string", "note": "city/town/locality"},
+      "postcode":  { "name": "postcode", "type": "numeric", "pattern": "xxxxx", "note": "postal code"}
     },
     "format": { 
       "line_1": ["street_lv"],
@@ -19,9 +19,9 @@ country_format = {
   },
   "Sweden": {
     "address": {
-      "street_lv": { "name": "address", "type": "string", "note": "street name, house/building number" },
-      "city_lv":   { "name": "city/town", "type": "string" },
-      "postcode":  { "name": "postal code", "type": "numeric", "pattern": "xxx xx" }
+      "street_lv": { "name": "street_lv", "type": "string", "note": "address (street name, house/building number, etc.)" },
+      "city_lv":   { "name": "city_lv", "type": "string", "note": "city/town" },
+      "postcode":  { "name": "postcode", "type": "numeric", "pattern": "xxx xx", "note": "postal code" }
     },
     "format": { 
       "line_1": ["street_lv"],
@@ -300,7 +300,10 @@ def get_countries():
 @app.route('/format/<string:country>',methods =['GET'])
 def search_format(country):
     try:
+      print(country)
+
       result = country_format[country]
+
       print(result)
     except Exception as a:
         return jsonify({"error":str(a)})

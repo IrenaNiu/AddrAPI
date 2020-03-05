@@ -7,6 +7,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <script src="https://kit.fontawesome.com/90312fa36f.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="/static/media/favicon.ico">
+    <link rel="icon" type="image/gif" href="/static/media/animated_favicon1.gif">
   </head>
   <body>
     <div class="main-block">
@@ -25,7 +27,7 @@
             <option value="">Country</option>
             {% if countries %}
               {% for country in countries %}
-                <option value={{ country }}>{{ country }}</option>
+                <option name={{ country }}>{{ country }}</option>
               {% endfor %}
             {% endif %}
           </select>
@@ -45,13 +47,12 @@
 
   $(document).ready(function() {
 
-    // TO-DO: populate the list; store it properly
-    var country_format = [{"name":"China", "format":"Street address+City|Postcode+Province"},
-                          {"name":"Austria", "format":"Street address|Postal code+City/Town/Locality"},
-                          {"name":"New Zealand", "format":"Apartment number|House number+Street name|Suburb|City+Postal code"}]; 
-
     $('#country').change(function() {
-      var selectedCountry = $(this).children("option:selected").val();
+      var selectedCountry = $(this).children("option:selected").text();
+
+      console.log(selectedCountry)
+
+      $('#addrItems').empty();
 
       if (selectedCountry == "") {
         $('#addrItems').empty();
@@ -66,28 +67,35 @@
         return;
       };
 
+      $.ajax({
+              type: 'post',
+              url: '/format',
+              data: {
+                'country': selectedCountry
+              },
+              dataType: "json",
+              success: function (data) {
+                  console.log('Submission was successful.');
+                  console.log(data);
 
+                  lines = data[selectedCountry]
 
-      // TO-DO: format pattern, see https://www.w3schools.com/tags/att_input_pattern.asp
-      for (var country of country_format) {
+                  for (var line of lines) {
+                    $('#addrItems').append('<div class="line">');
 
-        if (country.name == selectedCountry) {
-          $('#addrItems').empty();
-
-          var format = country.format;
-          var addrItems = format.split("|");       
-
-          for (var lineItems of addrItems) {
-            var items = lineItems.split("+");
-            for (var i of items) {
-              $('#addrItems').append(
-                '<input type="text" name="' + i + '" placeholder="' + i + '" />'
-                );
-            };
-          };
-          break;
-        };
-      };
+                    for (var item of line) {
+                      $('#addrItems').append(
+                        '<input type="text" name="' + item['name'] + '" placeholder="' + item['note'] + '" />'
+                      );
+                    }
+                    $('#addrItems').append('</div>');
+                  };
+              },
+              error: function (data) {
+                  console.log('An error occurred.');
+                  console.log(data);
+              }
+          })
     });
 
   })

@@ -41,10 +41,14 @@ h2 {
 form {
       background: rgba(0, 0, 0, 0.7); 
 }
-#addrItems {
+
+#addrItems > input {
+      margin-right: 10px;
+}
+/*#addrItems {
       display: flex;
       flex-direction: column;
-}
+}*/
 .title {
       display: flex;
       align-items: center;
