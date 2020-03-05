@@ -4,11 +4,12 @@ import json
 
 app = Flask(__name__)
 
-VALIDATOR_AKI_ADDR = 'http://0.0.0.0:8000' 
+VALIDATOR_API_ADDR = 'http://0.0.0.0:8000' 
+DBCRUD_API_ADDR = 'http://0.0.0.0:7000' 
 
 @app.route('/', methods=['GET'])
 def home():
-    response = requests.get(VALIDATOR_AKI_ADDR + '/country')
+    response = requests.get(VALIDATOR_API_ADDR + '/country')
     countries = json.loads(response.text).get('countries')
     print(countries)
     return render_template('home.html', countries=countries)
@@ -16,7 +17,7 @@ def home():
 @app.route('/format', methods=['POST'])
 def get_format():
     country = request.form['country']
-    response = requests.get(VALIDATOR_AKI_ADDR + '/format/' + country)
+    response = requests.get(VALIDATOR_API_ADDR + '/format/' + country)
     country_format = json.loads(response.text)
     print(country_format)
 
@@ -38,8 +39,8 @@ def get_format():
     return {country : info}
 
 
-@app.route('/result', methods=['POST', 'GET'])
-def showResult():
+@app.route('/result', methods=['POST'])
+def search_address():
 
     info = request.form
     country = info['country']
@@ -47,8 +48,13 @@ def showResult():
     print('-----')
     print(info)
     print(country)
+    for k in info:
+        print(k + ': ' + info[k])
 
-    address = ['haha','lol']
+    address = info
+
+    # TO-DO call crud API
+    # response = requests.post(DBCRUD_API_ADDR + '/format/' + country)
 
     return render_template('result.html', data=address)
 

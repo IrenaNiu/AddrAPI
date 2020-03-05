@@ -84,9 +84,15 @@
                     $('#addrItems').append('<div class="line">');
 
                     for (var item of line) {
-                      $('#addrItems').append(
-                        '<input type="text" name="' + item['name'] + '" placeholder="' + item['note'] + '" />'
-                      );
+                      if (item['name'] == 'postcode') {
+                        $('#addrItems').append(
+                          '<input type="text" name="' + item['name'] + '" placeholder="' + item['note'] + '" title="' + item['title'] + '"  pattern="' + item['pattern'] + '" required />'
+                        ); 
+                      } else {
+                        $('#addrItems').append(
+                          '<input type="text" name="' + item['name'] + '" placeholder="' + item['note'] + '" required />'
+                        );
+                      };
                     }
                     $('#addrItems').append('</div>');
                   };
