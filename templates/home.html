@@ -23,6 +23,11 @@
         <div class="info">
           <select name="country" id="country">
             <option value="">Country</option>
+            {% if countries %}
+              {% for country in countries %}
+                <option value={{ country }}>{{ country }}</option>
+              {% endfor %}
+            {% endif %}
           </select>
           <div class="addrItems" id="addrItems">
             <input type="text" name="name" placeholder="Street address" />
@@ -45,12 +50,6 @@
                           {"name":"Austria", "format":"Street address|Postal code+City/Town/Locality"},
                           {"name":"New Zealand", "format":"Apartment number|House number+Street name|Suburb|City+Postal code"}]; 
 
-    $.each(country_format, function(key, val) {
-      $('#country').append(
-        '<option value="' + val.name + '">' + val.name + '</option>'
-      );
-    });
-
     $('#country').change(function() {
       var selectedCountry = $(this).children("option:selected").val();
 
@@ -66,6 +65,8 @@
         );
         return;
       };
+
+
 
       // TO-DO: format pattern, see https://www.w3schools.com/tags/att_input_pattern.asp
       for (var country of country_format) {

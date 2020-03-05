@@ -1,40 +1,50 @@
 from flask import Flask, render_template, request, redirect, url_for
+import requests
+import json
 
 app = Flask(__name__)
 
-country_format = [{"name":"China", "format":"Street address+City|Postcode+Province"},
-                  {"name":"Austria", "format":"Street address|Postal code+City/Town/Locality"},
-                  {"name":"New Zealand", "format":"Apartment number|House number+Street name|Suburb|City+Postal code"}]; 
+VALIDATOR_AKI_ADDR = 'http://0.0.0.0:8000' 
 
 @app.route('/')
 def home():
-	return render_template('home.html')
-
+    response = requests.get(VALIDATOR_AKI_ADDR + '/country')
+    countries = json.loads(response.text).get('countries')
+    print(countries)
+    print(type(countries))
+    return render_template('home.html', countries=countries)
 
 @app.route('/result', methods=['POST', 'GET'])
 def showResult():
 
     info = request.form
-    selected_country = info['country']
+    country = info['country']
     address = []
 
-    for country in country_format:
-        if country['name'] == selected_country:
-            mail_format = country['format']
-    
-    for key in info.keys():
-        for val in info.getlist(key):
-            address.append(val);
-            address.append(', ');
+    response = requests.get(VALIDATOR_AKI_ADDR + '/format/' + 'SouthKorea')
+    country_info = json.loads(response.text)
+    print(country_info)
 
-    address = address[2:]
-    address.append(selected_country)
+    # for country in country_format:
+    #     if country['name'] == selected_country:
+    #         mail_format = country['format']
+
+    print(country_info.get('address'))
+    print('-----')
+    print(country_info.get('format'))
+    
+    # for key in info.keys():
+    #     for val in info.getlist(key):
+    #         address.append(val);
+    #         address.append(', ');
+
+    # address = address[2:]
+    # address.append(selected_country)
+
+    address = ['1', '2', '3']
 
     return render_template('result.html', data=address)
 
-
-
-
 if __name__ == '__main__':
-	app.run(debug=True)
+	app.run(host='0.0.0.0', port=5000, debug=True)
 
