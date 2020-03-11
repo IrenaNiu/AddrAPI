@@ -127,6 +127,27 @@ def onedata(id):
         db.session.commit()
         return jsonify({'status': 'Address '+id+' is updated from PostgreSQL!'})
 
+@app.route('/addressmatch', methods=['GET'])
+def oneaddr():
+
+    # GET a specific address by user input
+    if request.method == 'GET':
+        response = request.get_json()
+        street = response["street_lv"]
+        postcode = response["postcode"]
+        data = Address.query.filter((Address.street_lv == street), (Address.postcode == postcode)).all()
+        print(data)
+        dataDict = {
+            'adid': str(data).split('/')[0],
+            'country_lv': str(data).split('/')[1],
+            'state_lv': str(data).split('/')[2],
+            'city_lv': str(data).split('/')[3],
+            'subdiv_lv': str(data).split('/')[4],
+            'postcode': str(data).split('/')[5],
+            'street_lv': str(data).split('/')[6]
+        }
+        return jsonify(dataDict)
+
 if __name__ == '__main__':
     # app.debug = True
     # app.run()
