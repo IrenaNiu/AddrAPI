@@ -69,7 +69,7 @@
             "state_lv": "",
             "city_lv": "",
             "subdiv_lv": "",
-            "postcode_lv": "",
+            "postcode": "",
             "street_lv": ""}
     ```
     __Get all addresses & specific address by id:__
@@ -84,7 +84,7 @@
             "state_lv": "",
             "city_lv": "",
             "subdiv_lv": "",
-            "postcode_lv": "",
+            "postcode": "",
             "street_lv": ""}
     ```
     __Delete an address by id:__
