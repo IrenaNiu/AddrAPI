@@ -133,19 +133,71 @@ def oneaddr():
     # GET a specific address by user input
     if request.method == 'GET':
         response = request.get_json()
-        street = response["street_lv"]
-        postcode = response["postcode"]
-        data = Address.query.filter((Address.street_lv == street), (Address.postcode == postcode)).all()
-        print(data)
-        dataDict = {
-            'adid': str(data).split('/')[0],
-            'country_lv': str(data).split('/')[1],
-            'state_lv': str(data).split('/')[2],
-            'city_lv': str(data).split('/')[3],
-            'subdiv_lv': str(data).split('/')[4],
-            'postcode': str(data).split('/')[5],
-            'street_lv': str(data).split('/')[6]
-        }
+        if "postcode" not in response:
+            street = response["street_lv"]
+            data = Address.query.filter(Address.street_lv == street).all()
+            data = str(data)
+            print(data)
+            return data
+        else:    
+            street = response["street_lv"]
+            postcode = response["postcode"]
+            data = Address.query.filter((Address.street_lv == street), (Address.postcode == postcode)).all()
+            data = str(data)
+            print(data)
+            dataDict = {
+                'adid': str(data).split('/')[0],
+                'country_lv': str(data).split('/')[1],
+                'state_lv': str(data).split('/')[2],
+                'city_lv': str(data).split('/')[3],
+                'subdiv_lv': str(data).split('/')[4],
+                'postcode': str(data).split('/')[5],
+                'street_lv': str(data).split('/')[6]
+            }
+        
+        # dataDict = dict(item.split('/') for item in data.split(','))
+        # dataDict = dict(map(lambda x: x.split('/'), data.split(',')))
+        
+        # dic1 = {
+        #     data.split(',')[0],
+        #     data.split(',')[1],
+        #     data.split(',')[2],
+        # }
+        # dic = {}
+        # dic[0] = list(dic1)[0]
+        # dic[1] = list(dic1)[1]
+        # dic[2] = list(dic1)[2]
+        # print(dic)
+
+        # dataDict = {
+        #     {
+        #         'adid': str(dic[0]).split('/')[0],
+        #         'country_lv': str(dic[0]).split('/')[1],
+        #         'state_lv': str(dic[0]).split('/')[2],
+        #         'city_lv': str(dic[0]).split('/')[3],
+        #         'subdiv_lv': str(dic[0]).split('/')[4],
+        #         'postcode': str(dic[0]).split('/')[5],
+        #         'street_lv': str(dic[0]).split('/')[6]
+        #     },
+        #     {
+        #         'adid': str(dic[1]).split('/')[0],
+        #         'country_lv': str(dic[1]).split('/')[1],
+        #         'state_lv': str(dic[1]).split('/')[2],
+        #         'city_lv': str(dic[1]).split('/')[3],
+        #         'subdiv_lv': str(dic[1]).split('/')[4],
+        #         'postcode': str(dic[1]).split('/')[5],
+        #         'street_lv': str(dic[1]).split('/')[6]
+        #     },
+        #     {
+        #         'adid': str(dic[2]).split('/')[0],
+        #         'country_lv': str(dic[2]).split('/')[1],
+        #         'state_lv': str(dic[2]).split('/')[2],
+        #         'city_lv': str(dic[2]).split('/')[3],
+        #         'subdiv_lv': str(dic[2]).split('/')[4],
+        #         'postcode': str(dic[2]).split('/')[5],
+        #         'street_lv': str(dic[2]).split('/')[6]
+        #     }  
+        # }
         return jsonify(dataDict)
 
 if __name__ == '__main__':
