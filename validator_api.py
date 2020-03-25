@@ -30,9 +30,9 @@ country_format = {
   },
   "Switzerland": {
     "address": {
-      "street_lv": { "name": "address", "type": "string", "note": "street name, house/building number" },
-      "city_lv":   { "name": "city/town/village", "type": "string" },
-      "postcode":  { "name": "postal code", "type": "numeric", "pattern": "xxxx" }
+      "street_lv": { "name": "street_lv", "type": "string", "note": "address (street name, house/building number,etc.)" },
+      "city_lv":   { "name": "city_lv", "type": "string" ,"note": "city/town"},
+      "postcode":  { "name": "postcode", "type": "numeric", "title": "xxxx", "pattern":"[0-9]{4}", "note": "postal code" }
     },
     "format": { 
       "line_1": ["street_lv"],
@@ -41,9 +41,9 @@ country_format = {
   },
   "Taiwan (RoC)": {
     "address": {
-      "street_lv": { "name": "address", "type": "string", "note": "(house/building number), street name, section of street" },
-      "city_lv":   { "name": "city", "type": "string" },
-      "postcode":  { "name": "postal code", "type": "numeric", "pattern": "xxxxx" }
+      "street_lv": { "name": "street_lv", "type": "string", "note": "address (house/building number, street name, section of street,etc.)" },
+      "city_lv":   { "name": "city_lv", "type": "string", "note":"city" },
+      "postcode":  { "name": "postcode", "type": "numeric", "title": "xxxxx", "pattern":"[0-9]{5}", "note":"postal code" }
     },
     "format": { 
       "line_1": ["street_lv"],
@@ -52,9 +52,9 @@ country_format = {
   },
   "Ukraine": {
     "address": {
-      "street_lv": { "name": "address", "type": "string", "note": "street name, house/building number, apartment" },
-      "city_lv":   { "name": "town/city/locality", "type": "string" },
-      "postcode":  { "name": "postal code", "type": "numeric", "pattern": "xxxxx" }
+      "street_lv": { "name": "street_lv", "type": "string", "note": "address (street name, house/building number, apartment,etc.)" },
+      "city_lv":   { "name": "city_lv", "type": "string", "note":"town/city/locality" },
+      "postcode":  { "name": "postcode", "type": "numeric", "title": "xxxxx", "pattern":"[0-9]{5}", "note":"postal code" }
     },
     "format": { 
       "line_1": ["street_lv"],
@@ -64,9 +64,9 @@ country_format = {
   },
   "United Kingdom": {
     "address": {
-      "street_lv": { "name": "address", "type": "string", "note": "house/building number, street name" },
-      "city_lv":   { "name": "town/city", "type": "string" },
-      "postcode":  { "name": "postal code", "type": "string", "pattern": "xxxx xxx" }
+      "street_lv": { "name": "street_lv", "type": "string", "note": "address (house/building number, street name,etc.)" },
+      "city_lv":   { "name": "city_lv", "type": "string", "note":"town/city" },
+      "postcode":  { "name": "postcode", "type": "string", "title": "xxxx xxx", "pattern":"[0-9]{4} [0-9]{3}", "note":"postal code" }
     },
     "format": { 
       "line_1": ["street_lv"],
@@ -76,10 +76,10 @@ country_format = {
   },
   "United States": {
     "address": {
-      "street_lv": { "name": "address", "type": "string", "note": "house/building number, street name" },
-      "city_lv":   { "name": "city", "type": "string" },
-      "state_lv": { "name": "state", "type": "string" },
-      "postcode":  { "name": "zip code", "type": "numeric", "pattern": "xxxxx" }
+      "street_lv": { "name": "street_lv", "type": "string", "note": "address (house/building number, street name,etc.)" },
+      "city_lv":   { "name": "city_lv", "type": "string", "note": "city" },
+      "state_lv": { "name": "state_lv", "type": "string", "note": "state" },
+      "postcode":  { "name": "postcode", "type": "numeric", "title": "xxxxx", "pattern":"[0-9]{5}", "note":"zip code" }
     },
     "format": { 
       "line_1": ["street_lv"],
@@ -88,10 +88,10 @@ country_format = {
   },
   "Uruguay": {
     "address": {
-      "street_lv": { "name": "address", "type": "string", "note": "street name, house/building number, apartment, floor" },
-      "city_lv":   { "name": "town/city", "type": "string" },
-      "state_lv": { "name": "province", "type": "string" },
-      "postcode":  { "name": "postal code", "type": "numeric", "pattern": "xxxxx" }
+      "street_lv": { "name": "street_lv", "type": "string", "note": "address(street name, house/building number, apartment, floor, etc.)" },
+      "city_lv":   { "name": "city_lv", "type": "string", "note": "town/city" },
+      "state_lv": { "name": "state_lv", "type": "string", "note": "province" },
+      "postcode":  { "name": "postcode", "type": "numeric", "title": "xxxxx", "pattern": "[0-9]{5}", "note": "postal code" }
     },
     "format": { 
       "line_1": ["street_lv"],
@@ -100,9 +100,9 @@ country_format = {
   },
   "Wales": {
     "address": {
-      "street_lv": { "name": "address", "type": "string", "note": "house/building number, street name" },
-      "city_lv":   { "name": "town/city", "type": "string" },
-      "postcode":  { "name": "postal code", "type": "string", "pattern": "xxxx xxx" }
+      "street_lv": { "name": "street_lv", "type": "string", "note": "address(house/building number, street name, etc.)" },
+      "city_lv":   { "name": "city_lv", "type": "string", "note": "town/city" },
+      "postcode":  { "name": "postcode", "type": "string", "title": "xxxx xxx", "pattern":"[0-9]{4} [0-9]{3}", "note": "postal code" }
     },
     "format": { 
       "line_1": ["street_lv"],
@@ -113,9 +113,9 @@ country_format = {
 
   "Netherlands":{
     "address":{
-      "street_lv": { "name": "address", "type": "string", "note": "house/building number, street name" },
-      "city_lv":   { "name": "town/locality", "type": "string" },
-      "postcode":  { "name": "postal code", "type": "string", "pattern": "xxxx xx" }
+      "street_lv": { "name": "street_lv", "type": "string", "note": "address(house/building number, street name, etc.)" },
+      "city_lv":   { "name": "city_lv", "type": "string", "note": "town/locality" },
+      "postcode":  { "name": "postcode", "type": "string", "title": "xxxx xx", "pattern":"[0-9]{4} [0-9]{2}", "note": "postal code" }
     },
     "format":{
       "line_1": ["street_lv"],
@@ -125,9 +125,9 @@ country_format = {
   
   "New Zealand":{
     "address":{
-      "street_lv": { "name": "address", "type": "string", "note": "house/building number, street name" },
-      "city_lv":   { "name": "town/city", "type": "string" },
-      "postcode":  { "name": "postal code", "type": "string", "pattern": "xxxx" }
+      "street_lv": { "name": "street_lv", "type": "string", "note": "address(house/building number, street name, etc.)" },
+      "city_lv":   { "name": "city_lv", "type": "string", "note": "town/city" },
+      "postcode":  { "name": "postcode", "type": "string", "title": "xxxx", "pattern":"[0-9]{4}", "note": "postal code" }
     },
     "format":{
       "line_1": ["street_lv"],
@@ -137,9 +137,9 @@ country_format = {
   
   "Norway":{
     "address":{
-      "street_lv": { "name": "address", "type": "string", "note": "house/building number, street name" },
-      "city_lv":   { "name": "town/city", "type": "string" },
-      "postcode":  { "name": "postal code", "type": "string", "pattern": "xxx" }
+      "street_lv": { "name": "street_lv", "type": "string", "note": "address (house/building number, street name, etc.)" },
+      "city_lv":   { "name": "city_lv", "type": "string", "note":"town/city" },
+      "postcode":  { "name": "postcode", "type": "string", "title": "xxx", "pattern": "[0-9]{3}", "note": "postal code" }
     },
     "format":{
       "line_1": ["street_lv"],
@@ -149,9 +149,9 @@ country_format = {
 
   "Oman":{
     "address":{
-      "street_lv": { "name": "address", "type": "string", "note": "house/building number, street name" },
-      "city_lv":   { "name": "town/city", "type": "string" },
-      "postcode":  { "name": "postcode", "type": "string", "pattern": "xxx" }
+      "street_lv": { "name": "street_lv", "type": "string", "note": "address (house/building number, street name, etc.)" },
+      "city_lv":   { "name": "city_lv", "type": "string", "note":"town/city" },
+      "postcode":  { "name": "postcode", "type": "string", "title": "xxx", "pattern": "[0-9]{3}", "note": "postcode" }
     },
     "format":{
       "line_1": ["street_lv"],
@@ -162,11 +162,11 @@ country_format = {
  
   "Pakistan":{
     "address":{
-      "street_lv": { "name": "address", "type": "string", "note": "house/building number" },
-      "street_lv2": { "name": "address2", "type": "string", "note": "street name"},
-      "subdiv_lv": { "name": "sector", "type": "string"},
-      "city_lv":   { "name": "town/city", "type": "string" },
-      "postcode":  { "name": "postal code", "type": "string", "pattern": "xxxxx" }
+      "street_lv": { "name": "street_lv", "type": "string", "note": "address( house/building number,etc.)" },
+      "street_lv2": { "name": "street_lv2", "type": "string", "note": "address2 (street name, etc.)"},
+      "subdiv_lv": { "name": "subdiv_lv", "type": "string","note": "sector"},
+      "city_lv":   { "name": "city_lv", "type": "string", "note": "town/city"},
+      "postcode":  { "name": "postcode", "type": "string", "title": "xxxxx", "pattern": "[0-9]{5}", "note": "postal code" }
     },
     "format":{
       "line_1": ["street_lv"],
@@ -178,9 +178,9 @@ country_format = {
   
   "Poland":{
     "address":{
-      "street_lv": { "name": "address", "type": "string", "note": "house/building number, street name" },
-      "city_lv":   { "name": "town/locality", "type": "string" },
-      "postcode":  { "name": "postal code", "type": "string", "pattern": "xx-xxx" }
+      "street_lv": { "name": "street_lv", "type": "string", "note": "address (house/building number, street name, etc.)" },
+      "city_lv":   { "name": "city_lv", "type": "string", "note": "town/locality" },
+      "postcode":  { "name": "postcode", "type": "string", "title": "xx-xxx", "pattern": "[0-9]{2}-[0-9]{3}", "note": "postal code" }
     },
     "format":{
       "line_1": ["street_lv"],
@@ -190,10 +190,10 @@ country_format = {
   
   "Portugal":{
     "address":{
-      "street_lv": { "name": "address", "type": "string", "note": "street name, house/building number" },
-      "city_lv":   { "name": "town/city", "type": "string" },
-      "state_lv":  { "name": "territorial subdivision", "type": "string" },
-      "postcode":  { "name": "postal code", "type": "string", "pattern": "xxxx-xxx" }
+      "street_lv": { "name": "street_lv", "type": "string", "note": "address (street name, house/building number, etc.)" },
+      "city_lv":   { "name": "city_lv", "type": "string", "note":"town/city" },
+      "state_lv":  { "name": "state_lv", "type": "string", "note": "territorial subdivision" },
+      "postcode":  { "name": "postcode", "type": "string", "title": "xxxx-xxx", "pattern": "[0-9]{4}-[0-9]{3}", "note": "postal code" }
     },
     "format":{
       "line_1": ["street_lv"],
@@ -204,10 +204,10 @@ country_format = {
     
   "Puerto Rico":{
     "address":{
-      "street_lv": { "name": "address", "type": "string", "note": "street name, house/building number" },
-      "city_lv":   { "name": "town/city", "type": "string" },
-      "state_lv":  { "name": "state", "type": "string" },
-      "postcode":  { "name": "zip code", "type": "string", "pattern": "xxxxx" }
+      "street_lv": { "name": "street_lv", "type": "string", "note": "address (street name, house/building number, etc.)" },
+      "city_lv":   { "name": "city_lv", "type": "string", "note": "town/city" },
+      "state_lv":  { "name": "state_lv", "type": "string", "note": "state" },
+      "postcode":  { "name": "postcode", "type": "string", "title": "xxxxx", "pattern": "[0-9]{5}", "note": "zip code" }
     },
     "format":{
       "line_1": [ "street_lv"],
@@ -218,10 +218,10 @@ country_format = {
     
   "Romania":{
     "address":{
-      "street_lv": { "name": "address", "type": "string", "note": "street name, house/building number" },
-      "city_lv":   { "name": "town/city", "type": "string" },
-      "state_lv":  { "name": "sector", "type": "string" },
-      "postcode":  { "name": "postal code", "type": "string", "pattern": "xxxxx" }
+      "street_lv": { "name": "street_lv", "type": "string", "note": "address (street name, house/building number, etc.)" },
+      "city_lv":   { "name": "city_lv", "type": "string", "note": "town/city" },
+      "state_lv":  { "name": "state_lv", "type": "string", "note": "sector" },
+      "postcode":  { "name": "postcode", "type": "string", "title": "xxxxx", "pattern": "[0-9]{5}", "note": "postal code" }
     },
     "format":{
       "line_1": [ "street_lv"],
@@ -232,10 +232,10 @@ country_format = {
    
   "Russia":{
     "address":{
-      "street_lv": { "name": "address", "type": "string", "note": "street name, house/building number" },
-      "city_lv":   { "name": "town/city", "type": "string" },
-      "state_lv":  { "name": "province", "type": "string" },
-      "postcode":  { "name": "postal code", "type": "string", "pattern": "xxxxxx" }
+      "street_lv": { "name": "street_lv", "type": "string", "note": "address (street name, house/building number, etc.)" },
+      "city_lv":   { "name": "city_lv", "type": "string", "note": "town/city" },
+      "state_lv":  { "name": "state_lv", "type": "string", "note": "province" },
+      "postcode":  { "name": "postcode", "type": "string", "title": "xxxxxx", "pattern": "[0-9]{6}", "note": "postal code" }
     },
     "format":{
       "line_1": [ "street_lv"],
@@ -247,9 +247,9 @@ country_format = {
     
   "Singapore":{
     "address":{
-      "street_lv": { "name": "address", "type": "string", "note": "street name, house/building number" },
-      "city_lv":   { "name": "town/city", "type": "string" },
-      "postcode":  { "name": "post code", "type": "string", "pattern": "xxxxxx" }
+      "street_lv": { "name": "street_lv", "type": "string", "note": "address (street name, house/building number, etc.)" },
+      "city_lv":   { "name": "city_lv", "type": "string", "note": "town/city" },
+      "postcode":  { "name": "postcode", "type": "string", "title": "xxxxxx", "pattern": "[0-9]{6}", "note":"post code" }
     },
     "format":{
       "line_1": [ "street_lv"],
@@ -257,11 +257,11 @@ country_format = {
     }
   },  
     
-  "SouthAfrica":{
+  "South Africa":{
     "address":{
-      "street_lv": { "name": "address", "type": "string", "note": "street name, house/building number" },
-      "city_lv":   { "name": "town/city", "type": "string" },
-      "postcode":  { "name": "post code", "type": "string", "pattern": "xx" }
+      "street_lv": { "name": "street_lv", "type": "string", "note": "address (street name, house/building number, etc.)" },
+      "city_lv":   { "name": "city_lv", "type": "string", "note": "town/city" },
+      "postcode":  { "name": "postcode", "type": "string", "title": "xx", "pattern": "[0-9]{2}", "note":"post code" }
     },
     "format":{
       "line_1": [ "street_lv"],
@@ -270,12 +270,12 @@ country_format = {
     }
   },    
     
-  "SouthKorea":{
+  "South Korea":{
     "address":{
-      "street_lv": { "name": "address", "type": "string", "note": "house/building number, street name" },
-      "subdiv_lv": { "name": "subdivision", "type": "string"},
-      "city_lv":   { "name": "town/city", "type": "string" },
-      "postcode":  { "name": "post code", "type": "string", "pattern": "xxx-xxx" }
+      "street_lv": { "name": "street_lv", "type": "string", "note": "address (house/building number, street name, etc.)" },
+      "subdiv_lv": { "name": "subdiv_lv", "type": "string", "note":"subdivision"},
+      "city_lv":   { "name": "city_lv", "type": "string", "note": "town/city" },
+      "postcode":  { "name": "postcode", "type": "string", "title": "xxx-xxx", "pattern": "[0-9]{3}-[0-9]{3}", "note":"post code" }
     },
     "format":{
       "line_1": [ "street_lv"],
